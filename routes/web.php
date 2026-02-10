@@ -136,3 +136,38 @@ Route::get('/application-form', function () {
 Route::get('/life-time-form', function () {
     return view('pages.life-time-form');
 })->name('life-time-form');
+
+// ===== Admin Routes =====
+use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\CareerController;
+use App\Http\Controllers\Admin\EnquiryController;
+
+// Admin Auth (guest)
+Route::get('/admin/login', [AdminAuthController::class, 'showLogin'])->name('admin.login');
+Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
+Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+
+// Admin Panel (protected)
+Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+    Route::resource('courses', CourseController::class)->except(['show']);
+    Route::resource('events', EventController::class)->except(['show']);
+    Route::resource('news', NewsController::class)->except(['show']);
+    Route::resource('blogs', BlogController::class)->except(['show']);
+    Route::resource('galleries', GalleryController::class)->except(['show']);
+    Route::resource('testimonials', TestimonialController::class)->except(['show']);
+    Route::resource('careers', CareerController::class)->except(['show']);
+
+    Route::get('enquiries', [EnquiryController::class, 'index'])->name('enquiries.index');
+    Route::get('enquiries/{enquiry}', [EnquiryController::class, 'show'])->name('enquiries.show');
+    Route::delete('enquiries/{enquiry}', [EnquiryController::class, 'destroy'])->name('enquiries.destroy');
+});

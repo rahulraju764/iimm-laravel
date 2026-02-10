@@ -21,7 +21,7 @@
 
 @section('content')
 <!-- Start Main Banner -->
-    <section class="main-banner" style="background-image: url({{ asset('assets/img/banner/logestic%20450-2.webp') }};">
+    <section class="main-banner" style="background-image: url({{ asset('assets/img/banner/logestic%20450-2.webp') }});">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 text-center">
