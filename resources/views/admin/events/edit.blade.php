@@ -17,12 +17,12 @@
                     <div class="admin-form-group"><label>Date</label><input type="datetime-local" name="date"
                             class="admin-form-control"
                             value="{{ old('date', $event->date ? $event->date->format('Y-m-d\TH:i') : '') }}"></div>
-                    <div class="admin-form-group"><label>Location</label><input type="text" name="location"
-                            class="admin-form-control" value="{{ old('location', $event->location) }}"></div>
+
                     <div class="admin-form-group"><label>Image</label><input type="file" name="image"
                             class="admin-form-control" accept="image/*">@if($event->image)
                                 <p style="margin-top:6px;color:var(--text-muted);font-size:12px;">Current:
-                            {{ basename($event->image) }}</p>@endif
+                                    {{ basename($event->image) }}
+                            </p>@endif
                     </div>
                     <div class="admin-form-group full-width"><label>Description</label><textarea name="description"
                             class="admin-form-control">{{ old('description', $event->description) }}</textarea></div>

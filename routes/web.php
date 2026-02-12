@@ -80,8 +80,10 @@ Route::get('/materials-management', function () {
 })->name('materials-management');
 
 // Event
+use App\Models\Event;
 Route::get('/event', function () {
-    return view('pages.event');
+    $events = Event::where('status', true)->latest()->paginate(9);
+    return view('pages.event', compact('events'));
 })->name('event');
 
 // Gallery

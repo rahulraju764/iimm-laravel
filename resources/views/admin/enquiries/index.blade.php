@@ -15,6 +15,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
+                            <th>Subject</th>
                             <th>Status</th>
                             <th>Date</th>
                             <th>Actions</th>
@@ -27,6 +28,7 @@
                                 <td style="color:var(--text-primary);font-weight:500;">{{ $enq->name }}</td>
                                 <td>{{ $enq->email }}</td>
                                 <td>{{ $enq->phone ?? '—' }}</td>
+                                <td>{{ $enq->subject ?? '—' }}</td>
                                 <td><span
                                         class="status-badge {{ $enq->is_read ? 'read' : 'unread' }}">{{ $enq->is_read ? 'Read' : 'Unread' }}</span>
                                 </td>

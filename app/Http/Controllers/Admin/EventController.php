@@ -26,7 +26,6 @@ class EventController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'date' => 'nullable|date',
-            'location' => 'nullable|string|max:255',
             'image' => 'nullable|image|max:2048',
             'status' => 'nullable|boolean',
         ]);
@@ -53,7 +52,6 @@ class EventController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'date' => 'nullable|date',
-            'location' => 'nullable|string|max:255',
             'image' => 'nullable|image|max:2048',
             'status' => 'nullable|boolean',
         ]);

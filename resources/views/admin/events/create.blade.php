@@ -16,8 +16,7 @@
                             class="admin-form-control" value="{{ old('title') }}" required></div>
                     <div class="admin-form-group"><label>Date</label><input type="datetime-local" name="date"
                             class="admin-form-control" value="{{ old('date') }}"></div>
-                    <div class="admin-form-group"><label>Location</label><input type="text" name="location"
-                            class="admin-form-control" value="{{ old('location') }}"></div>
+
                     <div class="admin-form-group"><label>Image</label><input type="file" name="image"
                             class="admin-form-control" accept="image/*"></div>
                     <div class="admin-form-group full-width"><label>Description</label><textarea name="description"

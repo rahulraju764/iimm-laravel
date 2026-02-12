@@ -22,6 +22,10 @@
             <div class="detail-value">{{ $enquiry->phone ?? '—' }}</div>
         </div>
         <div class="detail-row">
+            <div class="detail-label">Subject</div>
+            <div class="detail-value">{{ $enquiry->subject ?? '—' }}</div>
+        </div>
+        <div class="detail-row">
             <div class="detail-label">Date</div>
             <div class="detail-value">{{ $enquiry->created_at->format('d M Y, h:i A') }}</div>
         </div>

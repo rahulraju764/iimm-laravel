@@ -854,3 +854,58 @@ select.admin-form-control {
 .empty-state p {
     font-size: 15px;
 }
+
+/* ===== BOOTSTRAP PAGINATION OVERRIDES ===== */
+.pagination {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    gap: 4px;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: 8px 14px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+.page-link:hover {
+    z-index: 2;
+    color: #fff;
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.page-item.disabled .page-link {
+    color: var(--text-muted);
+    pointer-events: none;
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+    opacity: 0.6;
+}
+
+.page-item:first-child .page-link {
+    border-top-left-radius: var(--radius-sm);
+    border-bottom-left-radius: var(--radius-sm);
+}
+
+.page-item:last-child .page-link {
+    border-top-right-radius: var(--radius-sm);
+    border-bottom-right-radius: var(--radius-sm);
+}
