@@ -4,7 +4,7 @@
     <title>IIMM Cochin | Best courses for career</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content=" Advance your career with IIMM Cochin’s professional courses in supply chain, logistics, and materials management. Choose from diploma, certification, and training programs." />
+    <meta name="description" content=" Advance your career with IIMM Cochin's professional courses in supply chain, logistics, and materials management. Choose from diploma, certification, and training programs." />
     <meta name="keywords" content=" career oriented," />
     <meta property="og:locale" content="en_IN" />
     <meta property="og:type" content="website" />
@@ -41,7 +41,21 @@
                 <div class="section-title about-title  app-form-title wow animated fadeIn ">
                     <h2> Application For Short Term Course</h2>
                 </div>
-                <form action="">
+
+                @if(session('success'))
+                    <div class="alert alert-success" style="background:#d4edda;color:#155724;padding:15px;border-radius:8px;margin-bottom:20px;max-width:900px;margin-left:auto;margin-right:auto;">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if($errors->any())
+                    <div class="alert alert-danger" style="background:#f8d7da;color:#721c24;padding:15px;border-radius:8px;margin-bottom:20px;max-width:900px;margin-left:auto;margin-right:auto;">
+                        @foreach($errors->all() as $error)<div>{{ $error }}</div>@endforeach
+                    </div>
+                @endif
+
+                <form action="{{ route('application.submit') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="row">
                         <div class="col-xl-10 mx-auto">
                             <div class="iimm-application">
@@ -50,13 +64,19 @@
                                     <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="app-detail">
                                             <label for="" class="form-label">First Name</label>
-                                            <input type="text" placeholder="Enter First Name" class="form-control form-box1">
+                                            <input type="text" name="first_name" placeholder="Enter First Name" class="form-control form-box1" value="{{ old('first_name') }}" required>
+                                            @error('first_name')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="app-detail">
                                             <label for="" class="form-label">Last Name</label>
-                                            <input type="text" placeholder="Enter Last Name" class="form-control form-box1">
+                                            <input type="text" name="last_name" placeholder="Enter Last Name" class="form-control form-box1" value="{{ old('last_name') }}">
+                                            @error('last_name')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -65,13 +85,14 @@
 
                                             <label for="" class="form-label gen-label">Gender</label>
                                             <div class="Gender-section">
-                                                <input type="radio" name="gender" value="male">
+                                                <input type="radio" name="gender" value="male" {{ old('gender') == 'male' ? 'checked' : '' }}>
                                                 <label for="">Male</label>
 
-                                                <input type="radio" name="gender" value="female">
+                                                <input type="radio" name="gender" value="female" {{ old('gender') == 'female' ? 'checked' : '' }}>
                                                 <label for="">Female</label>
-
-
+                                                @error('gender')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -80,7 +101,10 @@
                                         <div class="app-detail">
 
                                             <label for="" class="form-label">Address</label>
-                                            <textarea name="" id="" cols="5" rows="5" class="form-control form-box1" id=""></textarea>
+                                            <textarea name="address" cols="5" rows="5" class="form-control form-box1">{{ old('address') }}</textarea>
+                                            @error('address')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -88,7 +112,10 @@
                                         <div class="app-detail">
 
                                             <label for="" class="form-label">Mobile Number</label>
-                                            <input type="number" placeholder="Enter Mobile Number" class="form-control form-box1">
+                                            <input type="text" name="phone" placeholder="Enter Mobile Number" class="form-control form-box1" value="{{ old('phone') }}">
+                                            @error('phone')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -96,7 +123,10 @@
                                         <div class="app-detail">
 
                                             <label for="" class="form-label">Email</label>
-                                            <input type="email" placeholder="Enter Email" class="form-control form-box1">
+                                            <input type="email" name="email" placeholder="Enter Email" class="form-control form-box1" value="{{ old('email') }}" required>
+                                            @error('email')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -104,7 +134,25 @@
                                         <div class="app-detail">
 
                                             <label for="" class="form-label">Date Of Birth</label>
-                                            <input type="date" placeholder="Enter DOB" class="form-control form-box1">
+                                            <input type="date" name="dob" placeholder="Enter DOB" class="form-control form-box1" value="{{ old('dob') }}">
+                                            @error('dob')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="app-detail">
+
+                                            <label for="" class="form-label">Passport Size Photo</label>
+                                            <div class="choose-file">
+                                                <label for="photo">Choose a file:</label>
+                                                <input type="file" id="photo" name="photo">
+                                                @error('photo')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
+                                                <br><br>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -114,8 +162,11 @@
                                             <label for="" class="form-label">Qualification(Copy of
                                                 Certificate to be attached)</label>
                                             <div class="choose-file">
-                                                <label for="myfile">Choose a file:</label>
-                                                <input type="file" id="myfile" name="myfile">
+                                                <label for="qualification_file">Choose a file:</label>
+                                                <input type="file" id="qualification_file" name="qualification_file">
+                                                @error('qualification_file')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                                 <br><br>
                                             </div>
                                         </div>
@@ -125,7 +176,10 @@
                                         <div class="app-detail">
 
                                             <label for="" class="form-label">If employed, Name & Address</label>
-                                            <input type="text" placeholder="Enter Name & Adress" class="form-control form-box1">
+                                            <input type="text" name="employer_info" placeholder="Enter Name & Adress" class="form-control form-box1" value="{{ old('employer_info') }}">
+                                            @error('employer_info')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
                                     </div>
@@ -147,29 +201,38 @@
 
                                             <label for="" class="form-label">Admission sought for
                                                 (Name of Course)</label>
-                                            <input type="text" placeholder="Enter Course" class="form-control form-box1">
+                                            <input type="text" name="course_name" placeholder="Enter Course" class="form-control form-box1" value="{{ old('course_name') }}">
+                                            @error('course_name')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
                                         <div class="app-detail">
                                             <label for="" class="gen-label">How did you know about this course</label>
                                             <div class="proof">
-                                                <input type="radio" name="radio">
+                                                <input type="radio" name="referral_source" value="Person/Friend" {{ old('referral_source') == 'Person/Friend' ? 'checked' : '' }}>
                                                 <label for="">Name of Person / Friend:</label>
                                             </div>
                                             <div class="proof">
-                                                <input type="radio" name="radio">
+                                                <input type="radio" name="referral_source" value="IIMM/Advertisement" {{ old('referral_source') == 'IIMM/Advertisement' ? 'checked' : '' }}>
                                                 <label for="">IIMM / Advertisement</label>
                                             </div>
+                                            @error('referral_source')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
                                         
                                         <div class="app-detail">
                                             <label for="" class="form-label">Date</label>
-                                            <input type="date" class="form-control form-box1">
+                                            <input type="date" name="application_date" class="form-control form-box1" value="{{ old('application_date') }}">
+                                            @error('application_date')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
                                         <div class="app-detail">
-                                            <button class="final-submit">submit</button>
+                                            <button type="submit" class="final-submit">submit</button>
                                         </div>
 
 
@@ -180,41 +243,60 @@
 
                                             <label for="" class="form-label">Details of Fee Paid :Amount RS :
                                             </label>
-                                            <input type="number" placeholder="Enter Amount" class="form-control form-box1">
+                                            <input type="number" name="fee_amount" placeholder="Enter Amount" class="form-control form-box1" value="{{ old('fee_amount') }}">
+                                            @error('fee_amount')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="app-detail">
 
                                             <label for="" class="form-label"> Cheque Number
                                             </label>
-                                            <input type="number" placeholder="Enter Number" class="form-control form-box1">
+                                            <input type="text" name="cheque_number" placeholder="Enter Number" class="form-control form-box1" value="{{ old('cheque_number') }}">
+                                            @error('cheque_number')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="app-detail">
 
                                             <label for="" class="form-label"> Date
                                             </label>
-                                            <input type="date" placeholder="Enter Amount" class="form-control form-box1">
+                                            <input type="date" name="payment_date" placeholder="Enter Amount" class="form-control form-box1" value="{{ old('payment_date') }}">
+                                            @error('payment_date')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
                                         <div class="app-detail">
 
                                             <label for="" class="form-label"> Name of Bank
                                             </label>
-                                            <input type="text" placeholder="Bank Name" class="form-control form-box1">
+                                            <input type="text" name="bank_name" placeholder="Bank Name" class="form-control form-box1" value="{{ old('bank_name') }}">
+                                            @error('bank_name')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         
                                         <div class="app-detail">
                                             <label for="" class="form-label">Proof of payment made to bank (Pay in slip copy etc.)</label>
-                                            <input type="file" id="myfile" name="myfile"><br>
+                                            <input type="file" id="payment_proof_file" name="payment_proof_file">
+                                            @error('payment_proof_file')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                            <br>
                                         </div>
 
                                         <div class="app-detail">
                                             <label for="" class="gen-label">Attached proof of Transfer</label>
                                             <div class="row">
                                                 <div class="col-lg-12">
-                                                    <select class=" form-select">
-                                                        <option>Yes</option>
-                                                        <option>No</option>
+                                                    <select name="proof_attached" class=" form-select">
+                                                        <option value="Yes" {{ old('proof_attached') == 'Yes' ? 'selected' : '' }}>Yes</option>
+                                                        <option value="No" {{ old('proof_attached') == 'No' ? 'selected' : '' }}>No</option>
                                                     </select>
+                                                    @error('proof_attached')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
 
 

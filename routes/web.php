@@ -137,6 +137,12 @@ Route::get('/life-time-form', function () {
     return view('pages.life-time-form');
 })->name('life-time-form');
 
+// Form Submissions
+use App\Http\Controllers\FormController;
+Route::post('/enquiry-form', [FormController::class, 'submitEnquiry'])->name('enquiry.submit');
+Route::post('/application-form', [FormController::class, 'submitApplication'])->name('application.submit');
+Route::post('/life-time-form', [FormController::class, 'submitMembership'])->name('membership.submit');
+
 // ===== Admin Routes =====
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -148,6 +154,7 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\CareerController;
 use App\Http\Controllers\Admin\EnquiryController;
+use App\Http\Controllers\Admin\ApplicationController;
 
 // Admin Auth (guest)
 Route::get('/admin/login', [AdminAuthController::class, 'showLogin'])->name('admin.login');
@@ -170,4 +177,8 @@ Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
     Route::get('enquiries', [EnquiryController::class, 'index'])->name('enquiries.index');
     Route::get('enquiries/{enquiry}', [EnquiryController::class, 'show'])->name('enquiries.show');
     Route::delete('enquiries/{enquiry}', [EnquiryController::class, 'destroy'])->name('enquiries.destroy');
+
+    Route::get('applications', [ApplicationController::class, 'index'])->name('applications.index');
+    Route::get('applications/{application}', [ApplicationController::class, 'show'])->name('applications.show');
+    Route::delete('applications/{application}', [ApplicationController::class, 'destroy'])->name('applications.destroy');
 });

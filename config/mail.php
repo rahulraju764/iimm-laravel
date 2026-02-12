@@ -115,4 +115,9 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    'to' => [
+        'address' => env('APP_TO_MAIL', 'rahulraju764@gmail.com'),
+        'name' => 'Admin',
+    ],
+
 ];

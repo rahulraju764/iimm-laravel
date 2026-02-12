@@ -74,6 +74,15 @@
                     <span class="badge">{{ $unreadCount }}</span>
                 @endif
             </a>
+            <a href="{{ route('admin.applications.index') }}"
+                class="sidebar-link {{ request()->routeIs('admin.applications*') ? 'active' : '' }}">
+                <i class='bx bxs-file-doc'></i>
+                <span>Applications</span>
+                @php $unreadAppCount = \App\Models\Application::where('is_read', false)->count(); @endphp
+                @if($unreadAppCount > 0)
+                    <span class="badge">{{ $unreadAppCount }}</span>
+                @endif
+            </a>
         </nav>
 
         <div class="sidebar-footer">
