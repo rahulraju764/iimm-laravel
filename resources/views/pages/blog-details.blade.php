@@ -29,7 +29,7 @@
 					<h2>Blog Details</h2>
 					<p>
 						<a href="{{ route('home') }}">Home</a> <i class='bx bx-chevrons-right'></i>
-						<a href="{{ route('blog') }}">Blog</a> <i class='bx bx-chevrons-right'></i> {{ $blog->title }}
+						{{ $blog->title }}
 					</p>
 				</div>
 			</div>
@@ -55,6 +55,28 @@
 						</div>
 					</div><!-- End post-inner -->
 				</div><!-- END Col -->
+
+				<!--<div class="col-xl-4 col-lg-4 col-md-12 col-12 sidebar wow fadeIn">
+									<div class="widget popular-posts-widget">
+										<h3 class="widget-title">Popular Posts</h3>
+										<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+											@foreach($popularPosts as $post)
+												<li>
+													<a class="nav-link" href="{{ route('blog-details', ['slug' => $post->slug]) }}">
+														<div class="float-start ppimage">
+															<img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}">
+														</div>
+														<div class="ppcontent">
+															<h4>{{ $post->title }}</h4>
+														</div>
+													</a>
+												</li>
+											@endforeach
+										</div>
+									</div>
+								</div>-->
+
+				<!-- END Col -->
 
 
 			</div>
