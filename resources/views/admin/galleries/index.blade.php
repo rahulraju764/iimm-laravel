@@ -16,7 +16,7 @@
                             <th>#</th>
                             <th>Image</th>
                             <th>Title</th>
-                            <th>Category</th>
+
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -27,7 +27,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td><img src="{{ asset('storage/' . $gallery->image) }}" class="table-img"></td>
                                 <td style="color:var(--text-primary);font-weight:500;">{{ $gallery->title ?? '—' }}</td>
-                                <td>{{ $gallery->category ?? '—' }}</td>
+
                                 <td><span
                                         class="status-badge {{ $gallery->status ? 'active' : 'inactive' }}">{{ $gallery->status ? 'Active' : 'Inactive' }}</span>
                                 </td>

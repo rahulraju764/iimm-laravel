@@ -14,8 +14,7 @@
                 <div class="form-grid">
                     <div class="admin-form-group"><label>Title</label><input type="text" name="title"
                             class="admin-form-control" value="{{ old('title') }}"></div>
-                    <div class="admin-form-group"><label>Category</label><input type="text" name="category"
-                            class="admin-form-control" value="{{ old('category') }}"></div>
+
                     <div class="admin-form-group"><label>Image *</label><input type="file" name="image"
                             class="admin-form-control" accept="image/*" required></div>
                     <div class="admin-form-group">

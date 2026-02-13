@@ -20,4 +20,10 @@ class PageController extends Controller
         $popularPosts = Blog::where('status', true)->latest('published_at')->take(3)->get();
         return view('pages.blog-details', compact('blog', 'popularPosts'));
     }
+
+    public function gallery()
+    {
+        $galleries = \App\Models\Gallery::where('status', true)->latest()->paginate(12);
+        return view('pages.gallery', compact('galleries'));
+    }
 }

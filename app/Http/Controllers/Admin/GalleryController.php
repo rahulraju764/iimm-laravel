@@ -23,7 +23,7 @@ class GalleryController extends Controller
     {
         $data = $request->validate([
             'title' => 'nullable|string|max:255',
-            'category' => 'nullable|string|max:255',
+
             'image' => 'required|image|max:2048',
             'status' => 'nullable|boolean',
         ]);
@@ -47,7 +47,7 @@ class GalleryController extends Controller
     {
         $data = $request->validate([
             'title' => 'nullable|string|max:255',
-            'category' => 'nullable|string|max:255',
+
             'image' => 'nullable|image|max:2048',
             'status' => 'nullable|boolean',
         ]);

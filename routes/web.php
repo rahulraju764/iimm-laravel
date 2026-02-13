@@ -84,9 +84,7 @@ Route::get('/event', function () {
 })->name('event');
 
 // Gallery
-Route::get('/gallery', function () {
-    return view('pages.gallery');
-})->name('gallery');
+Route::get('/gallery', [PageController::class, 'gallery'])->name('gallery');
 
 // News
 Route::get('/news', function () {
