@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta')
-	<title>Best SAP Certification Program | ERP course in Kerala</title>
+	<title>{{ $blog->title }} | IIMM Cochin</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description"
@@ -10,15 +10,14 @@
 	<meta property="og:locale" content="en_IN" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="SAP Supply Chain Management Certification | Top Courses in Kerala" />
-	<meta property="og:url" content="PAGE_URL" />
+	<meta property="og:url" content="{{ route('blog-details', ['slug' => $blog->slug]) }}" />
 	<meta property="og:site_name" content="Indobritco" />
-	<meta property="og:image" content="#" />
+	<meta property="og:image" content="{{ asset('storage/' . $blog->image) }}" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="550" />
-	<meta property="og:description"
-		content="Learn from qualified professionals, and become an expert entrepreneur with IIMM." />
+	<meta property="og:description" content="{{ Str::limit(strip_tags($blog->content), 150) }}" />
 	<meta name="robots" content="index, follow" />
-	<link rel="canonical" href="#">
+	<link rel="canonical" href="{{ route('blog-details', ['slug' => $blog->slug]) }}">
 @endsection
 
 @section('content')
@@ -29,7 +28,8 @@
 				<div class="col-xl-12 text-center">
 					<h2>Blog Details</h2>
 					<p>
-						<a href="{{ route('home') }}">Home</a> <i class='bx bx-chevrons-right'></i> Blog Details
+						<a href="{{ route('home') }}">Home</a> <i class='bx bx-chevrons-right'></i>
+						<a href="{{ route('blog') }}">Blog</a> <i class='bx bx-chevrons-right'></i> {{ $blog->title }}
 					</p>
 				</div>
 			</div>
@@ -44,25 +44,16 @@
 				<div class="col-xl-8 col-lg-8 col-md-12 col-12 wow fadeIn">
 					<div class="post-inner">
 						<div class="post-image">
-							<img src="{{ asset('assets/img/blog/blog.jpg') }}" class="img-fluid" alt="image">
+							<img src="{{ asset('storage/' . $blog->image) }}" class="img-fluid" alt="{{ $blog->title }}">
 						</div>
 
 						<div class="entry-content">
-							<h2>Objective of Logistics Management</h2>
+							<h2>{{ $blog->title }}</h2>
 							<p>
-								Logistics offers varied career prospects, which blends problem-solving, international trade
-								and technology. It provides stability, diverse roles, and growth opportunities across
-								various industries. Logistics professionals manage supply chains and making them vital to
-								business success. With rising e-commerce and globalization, logistics careers are relevant,
-								advanced, and provide rewarding opportunities worldwide.
+								{!! $blog->content !!}
 							</p>
-
-
 						</div>
-
-
 					</div><!-- End post-inner -->
-
 				</div><!-- END Col -->
 
 

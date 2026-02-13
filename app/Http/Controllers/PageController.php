@@ -13,4 +13,11 @@ class PageController extends Controller
         $popularPosts = Blog::where('status', true)->latest('published_at')->take(3)->get();
         return view('pages.blog', compact('blogs', 'popularPosts'));
     }
+
+    public function blogDetails($slug)
+    {
+        $blog = Blog::where('slug', $slug)->where('status', true)->firstOrFail();
+        $popularPosts = Blog::where('status', true)->latest('published_at')->take(3)->get();
+        return view('pages.blog-details', compact('blog', 'popularPosts'));
+    }
 }
