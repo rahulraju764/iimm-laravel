@@ -28,21 +28,21 @@
             </a>
 
             <div class="sidebar-label">Content Management</div>
-            <a href="{{ route('admin.courses.index') }}"
+            <!-- <a href="{{ route('admin.courses.index') }}"
                 class="sidebar-link {{ request()->routeIs('admin.courses*') ? 'active' : '' }}">
                 <i class='bx bxs-book-open'></i>
                 <span>Courses</span>
-            </a>
+            </a> -->
             <a href="{{ route('admin.events.index') }}"
                 class="sidebar-link {{ request()->routeIs('admin.events*') ? 'active' : '' }}">
                 <i class='bx bxs-calendar-event'></i>
                 <span>Events</span>
             </a>
-            <a href="{{ route('admin.news.index') }}"
+            <!-- <a href="{{ route('admin.news.index') }}"
                 class="sidebar-link {{ request()->routeIs('admin.news*') ? 'active' : '' }}">
                 <i class='bx bxs-news'></i>
                 <span>News</span>
-            </a>
+            </a> -->
             <a href="{{ route('admin.blogs.index') }}"
                 class="sidebar-link {{ request()->routeIs('admin.blogs*') ? 'active' : '' }}">
                 <i class='bx bxs-edit-alt'></i>
@@ -53,16 +53,16 @@
                 <i class='bx bxs-image-alt'></i>
                 <span>Gallery</span>
             </a>
-            <a href="{{ route('admin.testimonials.index') }}"
+            <!-- <a href="{{ route('admin.testimonials.index') }}"
                 class="sidebar-link {{ request()->routeIs('admin.testimonials*') ? 'active' : '' }}">
                 <i class='bx bxs-quote-alt-left'></i>
                 <span>Testimonials</span>
-            </a>
-            <a href="{{ route('admin.careers.index') }}"
+            </a> -->
+            <!-- <a href="{{ route('admin.careers.index') }}"
                 class="sidebar-link {{ request()->routeIs('admin.careers*') ? 'active' : '' }}">
                 <i class='bx bxs-briefcase'></i>
                 <span>Careers</span>
-            </a>
+            </a> -->
 
             <div class="sidebar-label">Communications</div>
             <a href="{{ route('admin.enquiries.index') }}"
