@@ -59,9 +59,8 @@ Route::get('/short-course', function () {
 })->name('short-course');
 
 // Blog
-Route::get('/blog', function () {
-    return view('pages.blog');
-})->name('blog');
+use App\Http\Controllers\PageController;
+Route::get('/blog', [PageController::class, 'blog'])->name('blog');
 
 Route::get('/blog-details', function () {
     return view('pages.blog-details');
